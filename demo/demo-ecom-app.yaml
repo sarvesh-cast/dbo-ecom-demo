@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-ecom-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-ecom-app
+  template:
+    metadata:
+      labels:
+        app: demo-ecom-app
+    spec:
+      containers:
+      - name: demo-ecom-app
+        image: sarveshanand94/ecomdb:v1
+        ports:
+          - containerPort: 3000
+        resources:
+          limits:
+            cpu: '3'
+            memory: 3000Mi
+          requests:
+            cpu: '3'
+            memory: 3000Mi
+        env:
+          - name: DB_NAME
+            value: "ecomdb"
+          - name: DB_USER
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: "$V[5<>]Bqp.bjR_lO7)9|[qr1Q.i"
+          - name: DB_HOST
+            value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
+          - name: DB_PORT
+            value: "5432"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-ecom-app-service
+spec:
+  selector:
+    app: demo-ecom-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: LoadBalancer  # This exposes the service publicly
