@@ -7,9 +7,9 @@ Welcome to dbo ecommerce demo app!!
 ### Step 1 - Deploy ecommerce app & locust load test tool
 
 Update DB details in demo-ecom-app.yaml <br>
-kubectl apply -f demo/
+kubectl apply -f demo/ <br>
 
-demo-ecom-app can be accessed at http://loadbalancer-ip:3000
+demo-ecom-app can be accessed at http://loadbalancer-ip:3000 <br>
 locust load app can be accessed at http://loadbalancer-ip:8089 <br>
 
 
@@ -23,10 +23,12 @@ npm run user:create -- --email "admin@admin.com" --password "admin123" --name "a
 
 Navigate to boostrap folder <br>
 Update boostrap.vars with vars where mentioned as ## To be added by user <br>
-Execute bootstrap.sh <br>
-This will update products data. <br>
+Execute bootstrap.sh to update products data. <br>
 
 You are set to go!!!
 
 # E-COM Demo App
 ![Project Screenshot](readmeimages/app.png)
+
+
+This project is based on https://github.com/evershopcommerce/evershop
