@@ -10,6 +10,7 @@ Update DB details in demo-ecom-app.yaml <br>
 kubectl apply -f demo/ <br>
 
 demo-ecom-app can be accessed at http://loadbalancer-ip:3000 <br>
+demo-ecom-app can be accessed at http://loadbalancer-ip:3000/admin <br>
 locust load app can be accessed at http://loadbalancer-ip:8089 <br>
 
 
@@ -28,7 +29,10 @@ Execute bootstrap.sh to update products data. <br>
 You are set to go!!!
 
 # E-COM Demo App
-![Project Screenshot](readmeimages/app.png)
-
+![Demo APP Screenshot](readmeimages/app.png)
 
 This project is based on https://github.com/evershopcommerce/evershop
+
+# Locust load app
+![LOAD APP Screenshot](readmeimages/load.png)
+
