@@ -36,3 +36,35 @@ This project is based on https://github.com/evershopcommerce/evershop
 # Locust load app
 ![LOAD APP Screenshot](readmeimages/load.png)
 
+
+## Troubleshooting FAQ'S
+
+1. Demo app is restarting continously
+Check db env vars in connections in demo-ecom-app.yaml & db is reachable
+
+```
+        env:
+          - name: DB_NAME
+            value: ""
+          - name: DB_USER
+            value: ""
+          - name: DB_PASSWORD
+            value: ""
+          - name: DB_HOST
+            value: ""
+          - name: DB_PORT
+            value: "5432"
+```
+
+2. Add new endpoints to locust to simulate load
+Modify confimap in locaust-load.yaml & add task with new endpoints
+
+```
+        @task
+        def get_products(self):
+            self.client.get("/men")
+
+        @task
+        def get_products_allstar(self):
+            self.client.get("/men/allstar")
+```
