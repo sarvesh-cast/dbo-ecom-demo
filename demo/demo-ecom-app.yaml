@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: demo-ecom-app
-        image: sarveshanand94/ecomdb:v1
+        image: sarveshanand94/debugecomdb:v3
         ports:
           - containerPort: 3000
         resources:
@@ -27,11 +27,11 @@ spec:
             memory: 3000Mi
         env:
           - name: DB_NAME
-            value: "ecomdb"
+            value: "finaldb"
           - name: DB_USER
             value: "postgres"
           - name: DB_PASSWORD
-            value: ""
+            value: "$V[5<>]Bqp.bjR_lO7)9|[qr1Q.i"
           - name: DB_HOST
             value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
           - name: DB_PORT
