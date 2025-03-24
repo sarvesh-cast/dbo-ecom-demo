@@ -1,3 +1,5 @@
+# Boostrap creates products data in mem & women categories
+
 #!/bin/bash
 
 # Define the JSON string

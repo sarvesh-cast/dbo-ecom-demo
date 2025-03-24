@@ -122,3 +122,23 @@ data:
         @task
         def get_products_peg(self):
             self.client.get("/men/phantom")
+
+        @task
+        def get_products_allstar(self):
+            self.client.get("/men/air")
+
+        @task
+        def get_products_chuck70(self):
+            self.client.get("/men/court")
+
+        @task
+        def get_products_pegasus(self):
+            self.client.get("/men/revolution")
+
+        @task
+        def get_products_zoom(self):
+            self.client.get("/men/trefoil")
+
+        @task
+        def get_products_peg(self):
+            self.client.get("/men/strutter")

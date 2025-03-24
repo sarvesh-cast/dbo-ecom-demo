@@ -9,18 +9,20 @@ Welcome to dbo ecommerce demo app!!
 Update DB details in demo-ecom-app.yaml <br>
 
 ```
-kubectl apply -f demo/ <br>
+kubectl apply -f demo/
 
-demo-ecom-app can be accessed at http://loadbalancer-ip:3000 <br>
-demo-ecom-app admin panel can be accessed at http://loadbalancer-ip:3000/admin <br>
-locust load app can be accessed at http://loadbalancer-ip:8089 <br>
+demo-ecom-app can be accessed at http://loadbalancer-ip:3000 
+demo-ecom-app admin panel can be accessed at http://loadbalancer-ip:3000/admin 
+locust load app can be accessed at http://loadbalancer-ip:8089 
+
+Admin password will be created in step 2
 ```
 
 ### Step 2 - Setup admin user for demo-ecom-app & boostrap mock data
 
 ```
-kubectl exec -it demo-ecom-app-pod-name -- /bin/sh <br>
-npm run user:create -- --email "admin@admin.com" --password "admin123" --name "admin" <br>
+kubectl exec -it demo-ecom-app-pod-name -- /bin/sh
+npm run user:create -- --email "admin@admin.com" --password "admin123" --name "admin" 
 ```
 
 ### Step 3 - Update boostrap details & run boostrap.sh
@@ -37,13 +39,19 @@ You are set to go!!!
 This project is based on https://github.com/evershopcommerce/evershop
 
 ## Locust load app
+
+Load Generation config
+DB CPU - 0.5 ACU TO 1.5 ACU
+No of users at concurrency - 200
+Ramp up users - 10
+
 ![LOAD APP Screenshot](readmeimages/load.png)
 
 
 ## Troubleshooting FAQ'S
 
 1. Demo app is restarting continously <br>
-Check db env vars in connections in demo-ecom-app.yaml & db is reachable
+Check db env vars in connections in demo-ecom-app.yaml & db is reachable (check rds sg)
 
 ```
         env:
@@ -60,7 +68,7 @@ Check db env vars in connections in demo-ecom-app.yaml & db is reachable
 ```
 
 2. Add new endpoints to locust to simulate load <br>
-Modify confimap in locaust-load.yaml & add task with new endpoints to hit.
+ add task with new endpoints to hit in confimap of locaust-load.yaml. Restart locust master & workers.
 
 ```
         @task
