@@ -120,25 +120,25 @@ data:
             self.client.get("/men/zoom")
 
         @task
-        def get_products_peg(self):
+        def phantom(self):
             self.client.get("/men/phantom")
 
         @task
-        def get_products_allstar(self):
+        def air(self):
             self.client.get("/men/air")
 
         @task
-        def get_products_chuck70(self):
+        def court(self):
             self.client.get("/men/court")
 
         @task
-        def get_products_pegasus(self):
+        def revolution(self):
             self.client.get("/men/revolution")
 
         @task
-        def get_products_zoom(self):
+        def trefoil(self):
             self.client.get("/men/trefoil")
 
         @task
-        def get_products_peg(self):
+        def strutter(self):
             self.client.get("/men/strutter")

@@ -32,7 +32,7 @@ spec:
             value: "postgres"
           - name: DB_PASSWORD
             value: ""
-          - name: DB_HOST
+          - name: DB_HOST # DBO K8S service endpoint
             value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
           - name: DB_PORT
             value: "5432"
