@@ -6,7 +6,21 @@ Welcome to dbo ecommerce demo app!!
 
 ### Step 1 - Deploy ecommerce app & locust load test tool
 
-Update DB details in demo-ecom-app.yaml <br>
+Update DB details in demo-ecom-app.yaml 
+```
+        env:
+          - name: DB_NAME
+            value: "rundb"
+          - name: DB_USER
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: ""
+          - name: DB_HOST # DBO K8S service endpoint
+            value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
+          - name: DB_PORT
+            value: "5432"
+```
+<br>
 
 ```
 kubectl apply -f demo/
