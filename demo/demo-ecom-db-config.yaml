@@ -13,4 +13,4 @@ data:
   DB_PORT: "5432"
   DB_NAME: "run3"
   DB_USER: "postgres"
-  DB_PASSWORD: "sDZLoDQj|B#(7tE2_N?ku|p[n:$R"
+  DB_PASSWORD: ""
