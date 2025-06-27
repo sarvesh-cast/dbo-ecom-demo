@@ -1,0 +1,16 @@
+# demo/demo-ecom-db-config.yaml
+
+# MAIN_DB -- Main DB (Postgres/Mysql endpoint)
+# DB_HOST -- DBO k8s service endpoint
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-ecom-db-config
+data:
+  MAIN_DB: "database-1-instance-1.cvqew6y8w8o0.us-east-2.rds.amazonaws.com"             # Main db (Postgres/Mysql)
+  DB_HOST: "db-optimizer-postgres-db-88b40-db.castai-db-optimizer.svc.cluster.local" # DBO k8s service endpoint
+  DB_PORT: "5432"
+  DB_NAME: "run3"
+  DB_USER: "postgres"
+  DB_PASSWORD: "sDZLoDQj|B#(7tE2_N?ku|p[n:$R"

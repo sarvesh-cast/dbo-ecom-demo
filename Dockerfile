@@ -1,4 +1,11 @@
 FROM node:18-alpine
+
+RUN apk update && apk add --no-cache \
+    curl \
+    jq \
+    postgresql15-client \
+    && rm -rf /var/cache/apk/*
+
 WORKDIR /app
 RUN npm install -g npm@9
 COPY package*.json .
@@ -6,8 +13,7 @@ COPY package*.json .
 # Copy your media.
 COPY media ./media
 
-# Copy your public files.
-COPY public ./public
+COPY bootstrap .
 
 COPY .env .
 

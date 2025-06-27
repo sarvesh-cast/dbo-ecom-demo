@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo-ecom-app
-        image: sarveshanand94/ecomdb:v2
+        image: sarveshanand94/ecomdb:v4
         ports:
           - containerPort: 3000
         resources:
@@ -25,17 +24,9 @@ spec:
           requests:
             cpu: '3'
             memory: 3000Mi
-        env:
-          - name: DB_NAME
-            value: "rundb"
-          - name: DB_USER
-            value: "postgres"
-          - name: DB_PASSWORD
-            value: ""
-          - name: DB_HOST # DBO K8S service endpoint
-            value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
-          - name: DB_PORT
-            value: "5432"
+        envFrom:
+          - configMapRef:
+              name: demo-ecom-db-config
 ---
 apiVersion: v1
 kind: Service

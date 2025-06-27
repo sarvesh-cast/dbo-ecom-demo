@@ -6,19 +6,15 @@ Welcome to dbo ecommerce demo app!!
 
 ### Step 1 - Deploy ecommerce app & locust load test tool
 
-Update DB details in demo-ecom-app.yaml 
+Update DB & DBO details in configmap (demo-ecom-db-config.yaml)
 ```
-        env:
-          - name: DB_NAME
-            value: "rundb"
-          - name: DB_USER
-            value: "postgres"
-          - name: DB_PASSWORD
-            value: ""
-          - name: DB_HOST # DBO K8S service endpoint
-            value: "dbo-database-1-c68f7.castai-db-optimizer.svc.cluster.local"
-          - name: DB_PORT
-            value: "5432"
+data:
+  MAIN_DB: "database-1-instance-1.cvqew6y8w8o0.us-east-2.rds.amazonaws.com"
+  DB_HOST: "db-optimizer-postgres-db-88b40-db.castai-db-optimizer.svc.cluster.local"
+  DB_PORT: "5432"
+  DB_NAME: "postgres"
+  DB_USER: "postgres"
+  DB_PASSWORD: ""
 ```
 <br>
 
@@ -29,22 +25,15 @@ demo-ecom-app can be accessed at http://loadbalancer-ip:3000
 demo-ecom-app admin panel can be accessed at http://loadbalancer-ip:3000/admin 
 locust load app can be accessed at http://loadbalancer-ip:8089 
 
-Admin password will be created in step 2
 ```
 
-### Step 2 - Setup admin user for demo-ecom-app & boostrap mock data
+### Step 2 - Bootstrap admin user for demo-ecom-app & boostrap mock data
 
 ```
 kubectl exec -it demo-ecom-app-pod-name -- /bin/sh
-npm run user:create -- --email "admin@admin.com" --password "admin123" --name "admin" 
+ls
+./bootstrap.sh
 ```
-
-### Step 3 - Update boostrap details & run boostrap.sh
-
-Navigate to boostrap folder <br>
-Update boostrap.vars with vars where mentioned as ## To be added by user ## <br>
-Execute bootstrap.sh to update products data. <br>
-
 You are set to go!!!
 
 ## E-COM Demo App
@@ -65,24 +54,20 @@ Ramp up users - 10
 ## Troubleshooting FAQ'S
 
 1. Demo app is restarting continously <br>
-Check db env vars in connections in demo-ecom-app.yaml & db is reachable (check rds sg)
+Check db env vars in connections in demo-ecom-db-config.yaml & db is reachable (check rds sg)
 
 ```
-        env:
-          - name: DB_NAME
-            value: ""
-          - name: DB_USER
-            value: ""
-          - name: DB_PASSWORD
-            value: ""
-          - name: DB_HOST
-            value: ""
-          - name: DB_PORT
-            value: "5432"
+data:
+  MAIN_DB: "database-1-instance-1.cvqew6y8w8o0.us-east-2.rds.amazonaws.com"
+  DB_HOST: "db-optimizer-postgres-db-88b40-db.castai-db-optimizer.svc.cluster.local"
+  DB_PORT: "5432"
+  DB_NAME: "postgres"
+  DB_USER: "postgres"
+  DB_PASSWORD: ""
 ```
 
 2. Add new endpoints to locust to simulate load <br>
- add task with new endpoints to hit in confimap of locaust-load.yaml. Restart locust master & workers.
+ add task with new endpoints to hit in confimap of locust-load.yaml. Restart locust master & workers.
 
 ```
         @task

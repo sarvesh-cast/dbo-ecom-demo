@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: locust-master
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: locust
@@ -35,7 +35,7 @@ kind: Deployment
 metadata:
   name: locust-worker
 spec:
-  replicas: 10
+  replicas: 0
   selector:
     matchLabels:
       app: locust
