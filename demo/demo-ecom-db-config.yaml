@@ -14,3 +14,4 @@ data:
   DB_NAME: "run3"
   DB_USER: "postgres"
   DB_PASSWORD: ""
+  DB_SSLMODE: "disable"
