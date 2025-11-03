@@ -15,6 +15,7 @@ data:
   DB_NAME: "postgres"
   DB_USER: "postgres"
   DB_PASSWORD: ""
+  DB_SSLMODE: "disable"
 ```
 <br>
 
